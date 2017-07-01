@@ -8,10 +8,10 @@ Polymer('g-spectrogram', {
   // Show axis labels, and how many ticks.
   labels: false,
   ticks: 5,
-  speed: 2,
+  speed: 3,
   // FFT bin size,
-  fftsize: 2048,
-  oscillator: false,
+  fftsize: 8192,
+  oscillator: true,
   color: false,
 
   attachedCallback: function() {
@@ -102,7 +102,7 @@ Polymer('g-spectrogram', {
         value = freq[i];
       }
 
-      ctx.fillStyle = (this.color ? this.getFullColor(value) : this.getGrayColor(value));
+      ctx.fillStyle = this.getFullColor(value);
 
       var percent = i / freq.length;
       var y = Math.round(percent * this.height);
@@ -192,7 +192,7 @@ Polymer('g-spectrogram', {
   },
 
   indexToFreq: function(index) {
-    var nyquist = context.sampleRate/2;
+var nyquist = context.sampleRate/2;
     return nyquist/this.getFFTBinCount() * index;
   },
 
@@ -228,11 +228,14 @@ Polymer('g-spectrogram', {
   },
 
   getFullColor: function(value) {
-    var fromH = 62;
+    var fromH = 240;
     var toH = 0;
     var percent = value / 255;
     var delta = percent * (toH - fromH);
     var hue = fromH + delta;
+    if (percent < 0.01){
+      return '#222'; 
+    }
     return 'hsl(H, 100%, 50%)'.replace(/H/g, hue);
   },
   
