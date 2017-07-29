@@ -29,8 +29,6 @@ Polymer('g-spectrogram', {
                                 this.onStreamError.bind(this));
     }
     this.ctx = this.$.canvas.getContext('2d');
-    this.ctx.fillstyle = '#222';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
   },
 
   render: function() {
@@ -55,6 +53,8 @@ Polymer('g-spectrogram', {
     this.renderFreqDomain();
 
     if (this.labels && didResize) {
+    this.ctx.fillstyle = '#222';
+    ctx.fillRect(0, 0, this.tempCanvas.width, this.tempCanvas.height);
       this.renderAxesLabels();
     }
 
