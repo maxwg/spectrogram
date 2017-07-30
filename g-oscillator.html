@@ -104,7 +104,6 @@ Polymer('g-oscillator', {
 
   onTouchStart: function(event) {
     event.preventDefault();
-    console.log('ts');
     if (this.osc_) {
       return;
     }
@@ -117,7 +116,6 @@ Polymer('g-oscillator', {
 
   onTouchMove: function(event) {
     event.preventDefault();
-    console.log('tm');
     if (this.osc_) {
       this.updatePointer(event);
       this.lastFreq = this.getLastFrequency();
@@ -127,7 +125,6 @@ Polymer('g-oscillator', {
 
   onTouchEnd: function(event) {
     event.preventDefault();
-    console.log('te');
     this.updatePointer(null);
     this.deleteOscillator_();
     this.lastFreq = null;
