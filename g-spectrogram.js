@@ -53,7 +53,7 @@ Polymer('g-spectrogram', {
     this.renderFreqDomain();
     if (didResize){
     this.ctx.fillstyle = '#222';
-    ctx.fillRect(0, 0, this.tempCanvas.width, this.tempCanvas.height); 
+    this.ctx.fillRect(0, 0, this.tempCanvas.width, this.tempCanvas.height); 
     }
     if (this.labels && didResize) {
       this.renderAxesLabels();
