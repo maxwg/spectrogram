@@ -1,4 +1,3 @@
-
 // Assumes context is an AudioContext defined outside of this class.
 
 Polymer('g-spectrogram', {
@@ -9,7 +8,7 @@ Polymer('g-spectrogram', {
   // Show axis labels, and how many ticks.
   labels: false,
   ticks: 5,
-  speed: 3,
+  speed: 5,
   // FFT bin size,
   fftsize: 8192,
   oscillator: true,
@@ -238,7 +237,7 @@ var nyquist = context.sampleRate/2;
     var delta = percent * (toH - fromH);
     var hue = fromH + delta;
     if (percent < 0.01){
-      return '#222'; 
+      return '#fff'; 
     }
     return 'hsl(H, 100%, 50%)'.replace(/H/g, hue);
   },
